@@ -10,30 +10,6 @@ fi
 # Local
 export PATH=$HOME/.local/bin:$HOME/.local/sbin:$PATH
 
-# rbenv
-eval "$(rbenv init -)"
-export RUBY_LATEST=$(rbenv install -l 2>/dev/null | awk '$1 ~ /^[0-9.]*$/ {latest=$1} END {print latest}')
-rbenv global $RUBY_LATEST
-
-# pyenv
-export PYTHON_LATEST=$(pyenv install -l 2>/dev/null | awk '$1 ~ /^[0-9.]*$/ {latest=$1} END {print latest}')
-export PYTHON2_LATEST=$(pyenv install -l 2>/dev/null | awk '$1 ~ /^2[0-9.]*$/ {latest=$1} END {print latest}')
-pyenv global $PYTHON_LATEST $PYTHON2_LATEST
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init -)"
-
-################################################################################
-# Go                                                                           #
-################################################################################
-export GOPATH="${HOME}/go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-export GO111MODULE=on
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-
-
 ################################################################################
 # colorls                                                                      #
 ################################################################################
@@ -164,59 +140,3 @@ source $ZSH/oh-my-zsh.sh
 # Autojump
 source $(brew --prefix)/share/autojump/autojump.zsh
 
-################################################################################
-# NVM                                                                          #
-################################################################################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-################################################################################
-# Android
-################################################################################
-export JAVA_HOME=`/usr/libexec/java_home -V  2>&1 2| sed -n 's/.*Java SE 8" //p'`
-export ANT_HOME=/usr/local/opt/ant
-export MAVEN_HOME=/usr/local/opt/maven
-export GRADLE_HOME=/usr/local/opt/gradle
-export ANDROID_HOME=/usr/local/share/android-sdk
-export ANDROID_NDK_HOME=/usr/local/share/android-ndk
-# For non-M1 installations
-# export INTEL_HAXM_HOME=/usr/local/Caskroom/intel-haxm
-export PATH=$ANT_HOME/bin:$PATH
-export PATH=$MAVEN_HOME/bin:$PATH
-export PATH=$GRADLE_HOME/bin:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-# export PATH=$ANDROID_HOME/platform-tools:$PATH
-# export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
-
-# QT
-export PATH=$PATH:/usr/local/opt/qt/bin
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/qt/include"
-
-# ASDR
-. $(brew --prefix asdf)/asdf.sh
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit
-compinit
