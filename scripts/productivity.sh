@@ -3,9 +3,6 @@
 ################################################################################
 # macOS Extras                                                                 #
 ################################################################################
-# Install 1password
-brew install --cask 1password
-
 # Install Alfred
 brew install --cask alfred
 
@@ -16,63 +13,22 @@ brew install --cask bartender
 # brew install --cask --appdir="~/Applications" boinc
 
 # Install Dropbox
-# brew install --cask dropbox
-
-# Install Evernote
-# brew install --cask evernote
-
-# Install Firefox
-# brew install --cask firefox
-
-# Install GIMP
-# brew install --cask gimp
-
-# Install Backup and Sync from Google
-brew install --cask google-backup-and-sync
-# Seems broken for M1?
-# brew install --cask google-drive-file-stream
-
-# Install Hugo
-brew install hugo
-
-# Install Inkscape
-# brew install --cask inkscape
-
-# iStat Menus
-brew install --cask istat-menus
+brew install --cask dropbox
 
 # Install krisp.ai
 brew install --cask krisp
 
 # Install MacTex
-# brew install --cask mactex
+brew install --cask mactex
 
 # Install Plex Media Server
-brew install --cask plex-media-server
-
-# Install Private Internet Access
-brew install private-internet-access
-
-# Install QuickLook Plugins: https://github.com/sindresorhus/quick-look-plugins
-# brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize \
-#     webpquicklook suspicious-package qlprettypatch quicklookase qlvideo \
-#     quicklook-csv
-
-# Install Resilio Sync
-brew install --cask resilio-sync
-
-# # Install Spectacle
-# brew install --cask spectacle
-# cp -r ./files/Shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json 2> /dev/null
+brew install --cask plex
 
 # Install Spotify
 brew install --cask spotify
 
 # Install VLC
 brew install --cask vlc
-
-# Install XQuartz
-# brew install --cask xquartz
 
 ################################################################################
 # Safari                                                                       #
@@ -153,19 +109,6 @@ defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 
 ################################################################################
-# Opera & Opera Developer                                                      #
-################################################################################
-# brew install --cask opera
-# # Expand the print dialog by default
-# defaults write com.operasoftware.Opera PMPrintingExpandedStateForPrint2 -boolean true
-# defaults write com.operasoftware.OperaDeveloper PMPrintingExpandedStateForPrint2 -boolean true
-
-################################################################################
-# Brave                                                                        #
-################################################################################
-#brew install --cask brave-browser
-
-################################################################################
 # Mail.app                                                                     #
 ################################################################################
 # Disable send and reply animations in Mail.app
@@ -191,31 +134,10 @@ defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnab
 brew install --cask discord
 
 # Install Skype
-# brew install --cask skype
+brew install --cask skype
 
 # Slack (with dark theme)
 brew install --cask slack
-# if [ -f /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js ]; then
-#   if ! grep -q 'slack-night-mode' /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js; then
-#     cat <<-EOF >> /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js
-# document.addEventListener("DOMContentLoaded", function() {
-#   let tt__customCss = \`.menu ul li a:not(.inline_menu_link) {color: #fff !important;}\`
-#   $.ajax({
-#        url: "https://cdn.rawgit.com/laCour/slack-night-mode/master/css/raw/black.css",
-#       success: function(css) {
-#           \$("<style></style>").appendTo("head").html(css + tt__customCss);
-#       }
-#  });
-# });
-# EOF
-#   fi
-# fi
-
-# Install Telegram
-brew install --cask telegram
-
-# Install Viber
-# brew install --cask viber
 
 # Install WhatsApp
 brew install --cask whatsapp
@@ -226,39 +148,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
-
-################################################################################
-# MacDown                                                                      #
-################################################################################
-brew install --cask macdown
-git clone https://github.com/dracula/macdown
-mkdir -p ~/Library/Application\ Support/MacDown/Themes/
-cp -f macdown/Dracula.style ~/Library/Application\ Support/MacDown/Themes/
-rm -rf macdown
-# Fancy AppleScript to activate the "Dracula" theme
-killall MacDown
-sleep 5
-/Applications/MacDown.app/Contents/MacOS/MacDown &
-sleep 5
-osascript <<EOD
-activate application "MacDown"
-tell application "System Events" to tell process "MacDown"
-  keystroke "," using command down
-  delay 0.5
-  tell window "Preferences"
-    click
-    click button "Editor" of toolbar 1
-    tell pop up button 1
-      click
-      tell menu 1
-        click menu item "Dracula"
-      end tell
-    end tell
-  end tell
-end tell
-EOD
-sleep 5
-killall MacDown
 
 ################################################################################
 # Photos.app                                                                   #

@@ -57,20 +57,6 @@ defaults write NSGlobalDomain AppleHighlightColor -string "0.788235 0.658823 0.9
 # Remove date and time from screenshots
 defaults write com.apple.screencapture “include-date” 0
 
-# Shift+Option+S, Speech Voice to Karen (Australian), Rapid Rate
-defaults write com.apple.speech.synthesis.general.prefs SpokenUIUseSpeakingHotKeyFlag -bool true
-defaults write com.apple.speech.synthesis.general.prefs SpokenUIUseSpeakingHotKeyCombo -int 2561
-defaults write com.apple.speech.voice.prefs VisibleIdentifiers '{"com.apple.speech.synthesis.voice.karen.premium" = 1;}'
-defaults write com.apple.speech.voice.prefs SelectedVoiceID -int 100827421
-defaults write com.apple.speech.voice.prefs SelectedVoiceName -string "Karen"
-plutil -replace VoiceRateDataArray -json '[
-  [
-    1886745202,
-    100827421,
-    225
-  ]
-]' ~/Library/Preferences/com.apple.speech.voice.prefs.plist
-
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 # Possible values:

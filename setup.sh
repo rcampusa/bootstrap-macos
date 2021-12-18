@@ -43,7 +43,7 @@ EOD
 # Run all of the shell scripts for setting up the machine
 function runSetup() {
   # Backup users dotfiles and copy over our dotfiles
-  ( ./scripts/dotfiles.sh )
+  #( ./scripts/dotfiles.sh )
 
   # Get the permissions we will need manually
   echo
@@ -79,75 +79,12 @@ function runSetup() {
   echo
   ( ./scripts/cli_core.sh )
 
-  # Setup Java
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Java:"
-  echo    "  ./scripts/programming/java.sh"
-  echo
-  ( ./scripts/programming/java.sh )
-
-  # Install Hacker Tools
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of hacker tools:"
-  echo    "  ./scripts/hacker_tools.sh"
-  echo
-  ( ./scripts/hacker_tools.sh )
-
-  # Setup Ruby
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of Ruby:"
-  echo    "  ./scripts/ruby.sh"
-  echo
-  ( ./scripts/programming/ruby.sh )
-
   # Setup Python
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Python:"
-  echo    "  ./scripts/python.sh"
-  echo
-  ( ./scripts/programming/python.sh )
-
-  # Setup Node / Javascript
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Javascript:"
-  echo    "  ./scripts/programming/javascript.sh"
-  echo
-  ( ./scripts/programming/javascript.sh )
-
-  # Setup Swift
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Swift:"
-  echo    "  ./scripts/programming/swift.sh"
-  echo
-  ( ./scripts/programming/swift.sh )
-
-  # Setup PHP
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of PHP:"
-  echo    "  ./scripts/programming/php.sh"
-  echo
-  ( ./scripts/programming/php.sh )
-
-  # Setup Go
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Go:"
-  echo    "  ./scripts/programming/go.sh"
-  echo
-  ( ./scripts/programming/go.sh )
-
-  # Setup Rust
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Rust:"
-  echo    "  ./scripts/programming/rust.sh"
-  echo
-  ( ./scripts/programming/rust.sh )
-
-  # Setup Erlang and Elixir
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Erlang and Elixir:"
-  echo    "  ./scripts/erlang.sh"
-  echo
-  ( ./scripts/programming/erlang.sh )
+  #echo
+  #echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Python:"
+  #echo    "  ./scripts/python.sh"
+  #echo
+  #( ./scripts/programming/python.sh )
 
   # Install Fonts
   echo
@@ -156,26 +93,12 @@ function runSetup() {
   echo
   ( ./scripts/fonts.sh )
 
-  # Setup Bash
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of Bash:"
-  echo    "  ./scripts/shells/bash.sh"
-  echo
-  ( ./scripts/shells/bash.sh )
-
   # Setup ZShell
   echo
   echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of ZShell:"
   echo    "  ./scripts/shells/zsh.sh"
   echo
   ( ./scripts/shells/zsh.sh )
-
-  # Setup Fish
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of Fish:"
-  echo    "  ./scripts/shells/fish.sh"
-  echo
-  ( ./scripts/shells/fish.sh )
 
   # Install Productivity Applications
   echo
@@ -190,41 +113,6 @@ function runSetup() {
   echo    "  ./scripts/development.sh"
   echo
   ( ./scripts/development.sh )
-
-  # Install Prototyping Board Tools
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Prototyping Board tools:"
-  echo    "  ./scripts/prototyping_boards.sh"
-  echo
-  ( ./scripts/prototyping_boards.sh )
-
-  # Install 3D Printing Tools
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of 3D Printing tools:"
-  echo    "  ./scripts/3dprinting.sh"
-  echo
-  ( ./scripts/3dprinting.sh )
-
-  # Setup AWS
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of AWS:"
-  echo    "  ./scripts/aws.sh"
-  echo
-  ( ./scripts/cloud/aws.sh )
-
-  # Setup GCP
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of GCP:"
-  echo    "  ./scripts/gcp.sh"
-  echo
-  ( ./scripts/cloud/gcp.sh )
-
-  # Setup OpenFaaS
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of OpenFaaS:"
-  echo    "  ./scripts/openfaas.sh"
-  echo
-  ( ./scripts/cloud/openfaas.sh )
 
   # Cleanup Homebrew
   echo
