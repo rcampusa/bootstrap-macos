@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 # Install Homebrew if not installed - brew.sh
-if ! hash brew 2>/dev/null; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install Homebrew
+which brew > /dev/null 2>&1
+if [ $? -eq 1 ]; then
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+	brew update
 fi
 
 # Install git (we do this because of a bug that appears if you already had homebrew and git)
